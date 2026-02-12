@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processus de Développement Agile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2F3A3A;
+            background: linear-gradient(135deg, #1E8788 0%, #2FAFB0 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(163deg, #ffffff 0%, #2FAFB0 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+}
+        
+
+        header .logo {
+            display: flex;
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        nav {
+            background: #F3FBFA;
+            padding: 20px 40px;
+            border-bottom: 3px solid #1E8788;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #1E8788;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: #1E8788;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .intro {
+            background: #F3FBFA;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 5px solid #1E8788;
+        }
+
+        .process-overview {
+            background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .process-overview ol {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .process-overview li {
+            margin: 8px 0;
+            font-size: 1.1em;
+        }
+
+        .phase {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #1E8788;
+        }
+
+        .phase h2 {
+            color: #1E8788;
+            font-size: 2em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #F3FBFA;
+        }
+
+        .phase h3 {
+            color: #2FAFB0;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .phase h4 {
+            color: #2F3A3A;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .objective {
+            background: #E0F5F3;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #2FAFB0;
+        }
+
+        .responsible {
+            background: #F3FBFA;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #1E8788;
+        }
+
+        .deliverables {
+            background: #E8F5E9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .deliverables ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .deliverables li:before {
+            content: "📄 ";
+            margin-right: 8px;
+        }
+
+        .warnings {
+            background: #FFF9E6;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #8BC34A;
+        }
+
+        .warnings ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .warnings li:before {
+            content: "⚠ ";
+            margin-right: 8px;
+        }
+
+        .criteria {
+            background: #E0F5F3;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #2FAFB0;
+        }
+
+        .criteria ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .criteria li:before {
+            content: "✓ ";
+            margin-right: 8px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .checked p:before {
+            content: "✓ ";
+            margin-right: 8px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #1E8788;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #E0F5F3;
+        }
+
+        tr:hover {
+            background: #F3FBFA;
+        }
+
+        .loop-box {
+            background: linear-gradient(135deg, #2FAFB0 0%, #4CAF50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .flow-diagram {
+            background: #F3FBFA;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .flow-step {
+            background: white;
+            padding: 15px;
+            margin: 10px auto;
+            max-width: 400px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #1E8788;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #1E8788;
+            margin: 5px 0;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, #1E8788 0%, #2FAFB0 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        .conclusion h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .key-points {
+            margin-top: 20px;
+        }
+
+        .key-points li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+
+        footer {
+            background: #2F3A3A;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            .phase {
+                padding: 20px;
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 5px 5px 5px 0;
+        }
+
+        .badge-phase {
+            background: #1E8788;
+            color: white;
+        }
+
+        .actions-list {
+            margin: 20px 0;
+        }
+
+        .actions-list ol {
+            margin-left: 25px;
+        }
+
+        .actions-list li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #F3FBFA;
+            border-radius: 4px;
+        }
+
+        .scenario-box {
+            background: #fff;
+            border: 2px solid #1E8788;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .scenario-box h4 {
+            color: #1E8788;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="KUSA_logo.png" alt="KUSA Logo" class="logo">
+            <h1>Processus de Développement & QA chez KUSA</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#vue-ensemble">Vue d'ensemble</a></li>
+                <li><a href="#phase1">Phase 1</a></li>
+                <li><a href="#phase2">Phase 2</a></li>
+                <li><a href="#phase3">Phase 3</a></li>
+                <li><a href="#phase4">Phase 4</a></li>
+                <li><a href="#phase5">Phase 5</a></li>
+                <li><a href="#phase6">Phase 6</a></li>
+                <li><a href="#phase7">Phase 7</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <section id="intro" class="intro">
+                <h2>Introduction</h2>
+                <p>Ce référentiel décrit le processus de développement agile adopté par l'équipe. Il se compose de <strong>7 phases distinctes</strong>, depuis l'élaboration du Product Backlog jusqu'à la clôture du sprint.</p>
+                <p style="margin-top: 15px;">Chaque phase est documentée avec ses objectifs, responsables, livrables et points de vigilance pour assurer la qualité et la cohérence du processus.</p>
+            </section>
+
+            <section id="vue-ensemble" class="process-overview">
+                <h2>Vue d'ensemble du processus</h2>
+                <ol>
+                    <li><strong>Phase 1 :</strong> Élaboration du Product Backlog</li>
+                    <li><strong>Phase 2 :</strong> Élaboration du Cahier de Test</li>
+                    <li><strong>Phase 3 :</strong> Développement et Tests Unitaires</li>
+                    <li><strong>Phase 4 :</strong> Exécution des Tests en Staging</li>
+                    <li><strong>Phase 5 :</strong> Cycle de Correction (si nécessaire)</li>
+                    <li><strong>Phase 6 :</strong> Test non régression</li>
+                    <li><strong>Phase 7 :</strong> Rapport de Synthèse et Clôture</li>
+                </ol>
+                <br>
+                <div style="font-style: italic; font-size: 1.1rem;">
+                    <p> <strong>NB :</strong> Certaines tâches doivent être réalisées en continu tout au long du cycle de vie du projet par les différents membres de l’équipe: </p>
+
+   <p style="margin-left: 30px;"> * <strong>le testeur :</strong> Maintenir et mettre à jour le cahier de recette fonctionnelle au fur et à mesure de l’avancement du projet, pour chaque sprint validé. </p>
+
+    <p style="margin-left: 30px;">* <strong>les développeurs :</strong> Assurer la mise à jour régulière du cahier de documentation technique tout au long du cycle de développement.</p>
+                </div>   
+            </section>
+
+            <!-- PHASE 1 -->
+            <section id="phase1" class="phase">
+                <h2><span class="badge badge-phase">Phase 1</span> Élaboration du Product Backlog</h2>
+                
+                <div class="objective">
+                    <h3>Objectif</h3>
+                    <p>Créer le Product Backlog, document central qui contient toutes les fonctionnalités, besoins et exigences du produit sous forme de User Stories, après échange avec le client.</p>
+                </div>
+
+                <div class="responsible">
+                    <h3>Responsables</h3>
+                    <p>Product Owner, Scrum Master, Équipe de développement (pour les estimations)</p>
+                </div>
+
+                <h3>Description</h3>
+                <p>Le Product Backlog est le document le plus important après l'échange avec le client. Il structure l'ensemble des besoins en fonctionnalités hiérarchisées et priorisées.</p>
+
+                <h3>Contenu du Product Backlog</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Élément</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Vision du produit</strong></td>
+                            <td>Objectif global et raison d'être du produit</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Besoins du client</strong></td>
+                            <td>Exigences fonctionnelles et non-fonctionnelles exprimées par le client</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Priorités</strong></td>
+                            <td>Importance business de chaque élément (P0, P1, P2...)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Critères d'acceptation</strong></td>
+                            <td>Conditions à remplir pour considérer la fonctionnalité comme terminée</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estimation</strong></td>
+                            <td>Story points, effort estimé par l'équipe de développement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Valeur métier</strong></td>
+                            <td>Bénéfice attendu pour l'organisation et les utilisateurs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>User Stories & Epics</strong></td>
+                            <td>Fonctionnalités détaillées organisées par grandes thématiques</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Structure du Backlog</h3>
+                <ol>
+                    <li><strong>Epics :</strong> Grandes fonctionnalités regroupant plusieurs User Stories</li>
+                    <li><strong>User Stories détaillées :</strong> Format standard "En tant que [rôle], je veux [action] afin de [bénéfice]"</li>
+                    <li><strong>Critères d'acceptation :</strong> Definition of Done pour chaque User Story</li>
+                </ol>
+
+                <div class="deliverables">
+                    <h3>Livrables</h3>
+                    <ul>
+                        <li>Document Product Backlog complet et priorisé</li>
+                        <li>Liste des Epics identifiés</li>
+                        <li>User Stories avec critères d'acceptation et estimations</li>
+                    </ul>
+                </div>
+
+                <div class="warnings">
+                    <h3>Points de Vigilance</h3>
+                    <ul>
+                        <li>S'assurer que chaque User Story respecte les critères INVEST (Independent, Negotiable, Valuable, Estimable, Small, Testable)</li>
+                        <li>Prioriser en fonction de la valeur métier et non de la facilité technique</li>
+                        <li>Impliquer toute l'équipe dans l'estimation (Planning Poker)</li>
+                        <li>Maintenir le backlog à jour et vivant (grooming régulier)</li>
+                    </ul>
+                </div>
+
+                <div class="criteria">
+                    <h3>Critères de Passage à la Phase Suivante</h3>
+                    <ul>
+                        <li>Le Product Backlog est validé par le Product Owner</li>
+                        <li>Les User Stories prioritaires ont des critères d'acceptation clairs</li>
+                        <li>L'équipe a estimé les User Stories du sprint à venir</li>
+                        <li>Les Epics sont structurés et compréhensibles</li>
+                        <li>Le document est partagé avec toute l'équipe</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- PHASE 2 -->
+            <section id="phase2" class="phase">
+                <h2><span class="badge badge-phase">Phase 2</span> Élaboration du Cahier de Test</h2>
+                
+                <div class="objective">
+                    <h3>Objectif</h3>
+                    <p>Analyser les User Stories et leurs critères d'acceptation pour identifier les scénarios fonctionnels à tester, puis rédiger le Cahier de Test qui constituera le référentiel détaillé des cas de test.</p>
+                </div>
+
+                <div class="responsible">
+                    <h3>Responsables</h3>
+                    <p>Testeur QA, Analyste de test, Product Owner (pour validation)</p>
+                </div>
+
+                <h3>Description</h3>
+                <p>Le testeur analyse les User Stories et leurs critères d'acceptation afin d'identifier les scénarios fonctionnels à tester. À partir de cette analyse, il rédige le Cahier de Test, qui constitue un référentiel détaillé des cas de test.</p>
+
+                <h3>Contenu du Cahier de Test</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Élément</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Référence User Story</strong></td>
+                            <td>Identifiant unique de la User Story testée (ex: US-001)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Objectif du test</strong></td>
+                            <td>Ce que le test cherche à vérifier</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Préconditions</strong></td>
+                            <td>État initial requis avant l'exécution du test</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cas de test nominaux</strong></td>
+                            <td>Scénarios de fonctionnement normal (happy path)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cas de test alternatifs</strong></td>
+                            <td>Scénarios d'erreur, cas limites, gestion des exceptions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Données de test</strong></td>
+                            <td>Jeux de données nécessaires pour l'exécution</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Étapes d'exécution</strong></td>
+                            <td>Actions détaillées à effectuer pour le test</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Résultat attendu</strong></td>
+                            <td>Comportement ou sortie attendue</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Statut du test</strong></td>
+                            <td>À exécuter / Réussi / Échoué / Bloqué</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Objectif Final</h4>
+                <p>Assurer une couverture complète des exigences fonctionnelles et réduire les risques d'anomalies.</p>
+
+                <div class="deliverables">
+                    <h3>Livrables</h3>
+                    <ul>
+                        <li>Cahier de Test complet pour le sprint</li>
+                        <li>Matrice de traçabilité User Stories ↔ Cas de test</li>
+                        <li>Jeux de données de test préparés</li>
+                    </ul>
+                </div>
+
+                <div class="warnings">
+                    <h3>Points de Vigilance</h3>
+                    <ul>
+                        <li>Couvrir tous les critères d'acceptation de chaque User Story</li>
+                        <li>Ne pas oublier les cas limites et les scénarios d'erreur</li>
+                        <li>Rédiger des cas de test exécutables et reproductibles</li>
+                        <li>Valider le Cahier de Test avec le Product Owner</li>
+                    </ul>
+                </div>
+
+                <div class="criteria">
+                    <h3>Critères de Passage à la Phase Suivante</h3>
+                    <ul>
+                        <li>Le Cahier de Test couvre 100% des User Stories du sprint</li>
+                        <li>Chaque cas de test est lié à un critère d'acceptation</li>
+                        <li>Les données de test sont prêtes</li>
+                        <li>Le Product Owner a validé les scénarios de test</li>
+                        <li>Le document est partagé avec l'équipe de développement</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- PHASE 3 -->
+            <section id="phase3" class="phase">
+                <h2><span class="badge badge-phase">Phase 3</span> Développement et Tests Unitaires</h2>
+                
+                <div class="objective">
+                    <h3>Objectif</h3>
+                    <p>Développer les fonctionnalités définies dans les User Stories, réaliser les tests unitaires, effectuer des code reviews, et déployer le code en environnement de test (staging).</p>
+                </div>
+
+                <div class="responsible">
+                    <h3>Responsables</h3>
+                    <p>Développeurs, Tech Lead, Équipe de développement</p>
+                </div>
+
+                <div class="actions-list">
+                    <h3>Actions Clés</h3>
+                    <ol>
+                        <li>Développer le code selon les User Stories et critères d'acceptation</li>
+                        <li>Rédiger et exécuter les tests unitaires (couverture minimale requise)</li>
+                        <li>Effectuer des code reviews et vérifier les fautes d'orthographe et de style en utilisant un outil de vérification de style (extension dans vscode)</li>
+                        <li>Intégrer le code dans la branche principale (merge) avec mention du numéro de la user story associée </li>
+                        <li>Déployer automatiquement en environnement staging via CI/CD</li>
+                        <li>Documenter les développements et les choix techniques</li>
+                    </ol>
+                </div>
+
+                <div class="deliverables">
+                    <h3>Livrables</h3>
+                    <ul>
+                        <li>💻 Code source versionné et intégré</li>
+                        <li>✅ Tests unitaires avec taux de couverture satisfaisant</li>
+                        <li>📝 Rapports de code review</li>
+                        <li>🚀 Application déployée en environnement staging</li>
+                    </ul>
+                </div>
+
+                <div class="warnings">
+                    <h3>Points de Vigilance</h3>
+                    <ul>
+                        <li>Respecter les standards de codage et les conventions de l'équipe</li>
+                        <li>Assurer une couverture de tests unitaires suffisante (minimum 80%)</li>
+                        <li>Ne pas merger du code sans code review validée</li>
+                        <li>Vérifier que le build CI/CD passe avant de déployer en staging</li>
+                        <li>Documenter toute dette technique identifiée</li>
+                    </ul>
+                </div>
+
+                <div class="criteria">
+                    <h3>Critères de Passage à la Phase Suivante</h3>
+                    <ul>
+                        <li>Tous les tests unitaires passent avec succès</li>
+                        <li>Le code a été validé en code review</li>
+                        <li>Le code est intégré dans la branche principale</li>
+                        <li>L'application est déployée et accessible en staging</li>
+                        <li>Aucune erreur bloquante n'est détectée au déploiement</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- PHASE 4 -->
+            <section id="phase4" class="phase">
+                <h2><span class="badge badge-phase">Phase 4</span> Exécution des Tests en Staging</h2>
+                
+                <div class="objective">
+                    <h3>Objectif</h3>
+                    <p>Exécuter les cas de test définis dans le Cahier de Test pour chaque User Story déployée en environnement staging, afin de valider la conformité fonctionnelle.</p>
+                </div>
+
+                <div class="responsible">
+                    <h3>Responsables</h3>
+                    <p>Testeur QA, Analyste de test</p>
+                </div>
+
+                <div class="actions-list">
+                    <h3>Actions Clés</h3>
+                    <ol>
+                        <li>Préparer l'environnement de test (données, configurations)</li>
+                        <li>Exécuter les cas de test nominaux pour chaque User Story</li>
+                        <li>Exécuter les cas de test alternatifs (erreurs, exceptions)</li>
+                        <li>Documenter les résultats de chaque test (réussi/échoué)</li>
+                        <li>Capturer les preuves (screenshots, logs) en cas d'anomalie</li>
+                        <li>Créer des tickets d'anomalies détaillés dans l'outil de suivi (Trello)</li>
+                    </ol>
+                </div>
+
+                <p style="margin: 20px 0; padding: 15px; background: #E0F5F3; border-radius: 6px;"><strong>NB :</strong> Le document de test est partagé en temps réel pour toute l'équipe</p>
+
+                <div class="deliverables">
+                    <h3>Livrables</h3>
+                    <ul>
+                        <li>📊 Cahier de Test mis à jour avec les résultats d'exécution</li>
+                        <li>🐛 Tickets d'anomalies créés et priorisés</li>
+                        <li>📸 Captures d'écran et logs des anomalies</li>
+                        <li>📈 Rapport d'avancement des tests</li>
+                    </ul>
+                </div>
+
+                <div class="warnings">
+                    <h3>Points de Vigilance</h3>
+                    <ul>
+                        <li>Exécuter les tests dans l'ordre défini pour respecter les dépendances</li>
+                        <li>Documenter précisément chaque anomalie pour faciliter la correction</li>
+                        <li>Vérifier que l'environnement staging reflète bien la production</li>
+                        <li>Ne pas hésiter à bloquer une User Story si une anomalie critique est détectée</li>
+                        <li>Communiquer rapidement les résultats aux développeurs</li>
+                    </ul>
+                </div>
+
+                <div class="criteria">
+                    <h3>Critères de Passage à la Phase Suivante</h3>
+                    <p style="margin-bottom: 15px;"><strong>Deux scénarios possibles :</strong></p>
+                    
+                    <div class="scenario-box">
+                        <h4>Scénario A - Retour en Phase 3 (Anomalies détectées)</h4>
+                        <p>✗ Des anomalies bloquantes ou majeures sont détectées<br>
+                        → <strong>Retour en Phase 3 pour correction</strong></p>
+                    </div>
+
+                    <div class="scenario-box">
+                        <h4>Scénario B - Passage en Phase 7 (Tests validés)</h4>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li>✓ Tous les tests critiques sont réussis</li>
+                            <li>✓ Aucune anomalie bloquante n'est en attente</li>
+                            <li>✓ Les anomalies mineures sont documentées et acceptées</li>
+                        </ul>
+                        <p>→ <strong>Passage en Phase 7</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PHASE 5 -->
+            <section id="phase5" class="phase">
+                <h2><span class="badge badge-phase">Phase 5</span> Cycle de Correction (Boucle de Retour)</h2>
+                
+                <div class="objective">
+                    <h3>Objectif</h3>
+                    <p>Corriger les anomalies détectées en Phase 4 et réitérer le cycle de développement et de test jusqu'à ce que tous les critères d'acceptation soient satisfaits.</p>
+                </div>
+
+                <h3>Description</h3>
+                <p>Cette phase n'est activée que si des anomalies ont été détectées lors de l'exécution des tests. Elle consiste en une boucle itérative entre la Phase 3 (correction) et la Phase 4 (re-test).</p>
+
+                <div class="responsible">
+                    <h3>Responsables</h3>
+                    <p>Développeurs (correction), Testeur QA (vérification)</p>
+                </div>
+
+                <h3>Déroulement du Cycle</h3>
+                
+                <div style="margin: 20px 0;">
+                    <h4>1. Analyse des anomalies :</h4>
+                    <ul>
+                        <li>Les développeurs analysent les tickets d'anomalies</li>
+                        <li>Priorisation des corrections selon la sévérité</li>
+                        <li>Estimation de l'effort de correction</li>
+                    </ul>
+
+                    <h4>2. Correction en Phase 3 :</h4>
+                    <ul>
+                        <li>Retour en Phase 3 : Développement et Tests Unitaires</li>
+                        <li>Correction du code</li>
+                        <li>Tests unitaires sur les corrections</li>
+                        <li>Code review des corrections</li>
+                        <li>Déploiement en staging</li>
+                    </ul>
+
+                    <h4>3. Vérification en Phase 4 :</h4>
+                    <ul>
+                        <li>Retour en Phase 4 : Exécution des Tests en Staging</li>
+                        <li>Re-test des cas de test ayant échoué</li>
+                        <li>Tests de non-régression</li>
+                        <li>Mise à jour du statut des anomalies</li>
+                    </ul>
+
+                    <h4>4. Décision :</h4>
+                    <ul>
+                        <li>Si nouvelles anomalies → retour Phase 3 (nouveau cycle)</li>
+                        <li>Si tests OK → passage Phase 6 (Tests de non régression)</li>
+                    </ul>
+                </div>
+
+                <div class="loop-box">
+                    🔄 BOUCLE ITÉRATIVE<br>
+                    Phase 3 → Phase 4 → Anomalies ? → Phase 3 ...<br>
+                    Le cycle se répète jusqu'à validation complète
+                </div>
+
+                <div class="deliverables">
+                    <h3>Livrables</h3>
+                    <ul>
+                        <li>🔧 Code corrigé et validé</li>
+                        <li>✅ Anomalies résolues et fermées</li>
+                        <li>📊 Rapport de suivi des corrections</li>
+                    </ul>
+                </div>
+
+                <div class="warnings">
+                    <h3>Points de Vigilance</h3>
+                    <ul>
+                        <li>Limiter le nombre d'itérations en corrigeant toutes les anomalies d'un coup</li>
+                        <li>Effectuer des tests de non-régression après chaque correction</li>
+                        <li>Maintenir une communication continue entre développeurs et testeurs</li>
+                        <li>Documenter les causes racines des anomalies pour éviter leur récurrence</li>
+                    </ul>
+                </div>
+
+                <div class="criteria">
+                    <h3>Sortie de la Boucle</h3>
+                    <p style="margin-bottom: 10px;">La boucle se termine quand :</p>
+                    <ul>
+                        <li>Toutes les anomalies bloquantes sont résolues</li>
+                        <li>Les anomalies critiques sont corrigées ou acceptées avec plan d'action</li>
+                        <li>Le taux de réussite des tests atteint le seuil requis (95%+)</li>
+                    </ul>
+                    <p style="margin-top: 15px;">→ <strong>Passage en Phase 7</strong></p>
+                </div>
+            </section>
+
+            <!-- PHASE 6 -->
+            <section id="phase6" class="phase">
+                <h2><span class="badge badge-phase">Phase 6</span> Test de Non-Régression</h2>
+                
+                <div class="objective">
+                    <h3>Objectif</h3>
+                    <p>Vérifier que les nouvelles fonctionnalités ou corrections n'ont pas introduit de régressions sur les fonctionnalités existantes, en rejouant un ensemble de tests critiques sur l'ensemble de l'application.</p>
+                </div>
+
+                <div class="responsible">
+                    <h3>Responsables</h3>
+                    <p>Testeur QA, Analyste de test, Lead QA</p>
+                </div>
+
+                <div class="actions-list">
+                    <h3>Actions Clés</h3>
+                    <ol>
+                        <li>Sélectionner les cas de test de non-régression pertinents (suite régression complète ou partielle selon l'impact)</li>
+                        <li>Préparer l'environnement de test avec des données représentatives</li>
+                        <li>Exécuter la suite de tests de non-régression (manuelle et/ou automatisée)</li>
+                        <li>Vérifier les fonctionnalités critiques et les parcours utilisateurs principaux</li>
+                        <li>Comparer les résultats avec la baseline de référence (version précédente)</li>
+                        <li>Documenter tous les écarts et régressions détectées</li>
+                        <li>Créer des tickets de régression avec priorité haute</li>
+                        <li>Rejouer les tests après correction des régressions</li>
+                    </ol>
+                </div>
+
+                <div class="deliverables">
+                    <h3>Livrables</h3>
+                    <ul>
+                        <li>📊 Rapport de tests de non-régression avec taux de succès</li>
+                        <li>🐛 Tickets de régression créés et suivis jusqu'à résolution</li>
+                        <li>📋 Matrice de traçabilité (fonctionnalités testées et résultats)</li>
+                        <li>📈 Comparatif des résultats (baseline vs. version actuelle)</li>
+                        <li>✅ Certificat de non-régression (si tous les tests sont au vert)</li>
+                    </ul>
+                </div>
+
+                <div class="warnings">
+                    <h3>Points de Vigilance</h3>
+                    <ul>
+                        <li>Prioriser les tests sur les fonctionnalités critiques métier en premier</li>
+                        <li>Maintenir à jour la suite de tests de non-régression après chaque release</li>
+                        <li>Automatiser les tests répétitifs pour gagner en efficacité</li>
+                        <li>Toute régression critique doit bloquer le déploiement en production</li>
+                        <li>Documenter l'impact métier de chaque régression détectée</li>
+                        <li>Prévoir suffisamment de temps pour les tests de non-régression dans le planning</li>
+                        <li>Impliquer les développeurs rapidement en cas de régression complexe</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- PHASE 7 -->
+            <section id="phase7" class="phase">
+                <h2><span class="badge badge-phase">Phase 7</span> Rapport de Synthèse et Clôture du Sprint</h2>
+                
+                <div class="objective">
+                    <h3>Objectif</h3>
+                    <p>Créer un rapport de synthèse des tests effectués, documenter les résultats, clôturer formellement les tests du sprint et préparer le déploiement en production.</p>
+                </div>
+
+                <div class="responsible">
+                    <h3>Responsables</h3>
+                    <p>Testeur QA, Scrum Master, Product Owner</p>
+                </div>
+
+                <div class="actions-list">
+                    <h3>Actions Clés</h3>
+                    <ol>
+                        <li>Consolider tous les résultats de tests du sprint</li>
+                        <li>Rédiger le rapport de synthèse des tests</li>
+                        <li>Calculer les métriques qualité (taux de réussite, couverture, etc.)</li>
+                        <li>Présenter les résultats en Sprint Review</li>
+                        <li>Obtenir la validation formelle du Product Owner</li>
+                        <li>Clôturer les tickets de test dans l'outil de suivi</li>
+                        <li>Archiver les livrables de test</li>
+                    </ol>
+                </div>
+
+                <h3>Contenu du Rapport de Synthèse</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Section</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Résumé exécutif</strong></td>
+                            <td>Vue d'ensemble des tests et conclusion générale</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Périmètre de test</strong></td>
+                            <td>Liste des User Stories testées et version de l'application</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Résultats détaillés</strong></td>
+                            <td>Nombre de tests exécutés, réussis, échoués, bloqués</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Métriques qualité</strong></td>
+                            <td>Taux de réussite, couverture des tests, vélocité de correction</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Anomalies résiduelles</strong></td>
+                            <td>Liste des anomalies mineures acceptées avec justification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6. Recommandations</strong></td>
+                            <td>Améliorations suggérées pour les prochains sprints</td>
+                        </tr>
+                        <tr>
+                            <td><strong>7. Validation</strong></td>
+                            <td>Avis du Product Owner et autorisation de mise en production</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="deliverables">
+                    <h3>Livrables</h3>
+                    <ul>
+                        <li>📄 Rapport de Synthèse des Tests complet</li>
+                        <li>📊 Tableau de bord des métriques qualité</li>
+                        <li>✅ Validation formelle du Product Owner</li>
+                        <li>📁 Archives de test (Cahier de Test, résultats, captures)</li>
+                        <li>🚀 Autorisation de mise en production</li>
+                    </ul>
+                </div>
+
+                <h3>Métriques Clés à Inclure</h3>
+                <ul style="margin: 20px 0;">
+                    <li><strong>Taux de réussite des tests :</strong> (Tests réussis / Tests exécutés) × 100</li>
+                    <li><strong>Couverture fonctionnelle :</strong> % de critères d'acceptation testés</li>
+                    <li><strong>Nombre d'anomalies détectées</strong> (par sévérité)</li>
+                    <li><strong>Temps moyen de correction des anomalies</strong></li>
+                    <li><strong>Nombre de cycles de correction</strong> (Phase 5)</li>
+                </ul>
+
+                <div class="warnings">
+                    <h3>Points de Vigilance</h3>
+                    <ul>
+                        <li>Être transparent sur les anomalies résiduelles acceptées</li>
+                        <li>S'assurer que le Product Owner comprend les risques liés aux anomalies mineures</li>
+                        <li>Documenter les leçons apprises pour améliorer les prochains sprints</li>
+                        <li>Archiver tous les documents de manière structurée</li>
+                    </ul>
+                </div>
+
+                <div class="criteria">
+                    <h3>Critères de Clôture du Sprint</h3>
+                    <ul>
+                        <li>Le rapport de synthèse est complet et validé</li>
+                        <li>Le Product Owner a donné son accord pour la mise en production</li>
+                        <li>Tous les documents sont archivés</li>
+                        <li>Les anomalies mineures sont documentées dans le backlog</li>
+                        <li>La présentation en Sprint Review est effectuée</li>
+                        <li>Les métriques sont satisfaisantes (taux de réussite > 95%)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CONCLUSION -->
+            <section id="conclusion" class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Ce référentiel décrit un processus de développement agile rigoureux et itératif, centré sur la qualité et la satisfaction des exigences du client.</p>
+                
+                <div class="key-points">
+                    <h3 style="color: white; margin-top: 25px;">Points clés du processus :</h3>
+                    <ol>
+                        <li><strong>Documentation rigoureuse :</strong> Product Backlog et Cahier de Test comme piliers</li>
+                        <li><strong>Séparation des responsabilités :</strong> Développeurs et testeurs avec des rôles distincts</li>
+                        <li><strong>Boucle de feedback rapide :</strong> Cycle itératif Phase 3 ↔ Phase 4</li>
+                        <li><strong>Qualité avant vélocité :</strong> Validation complète avant clôture</li>
+                        <li><strong>Traçabilité totale :</strong> De la User Story au résultat de test</li>
+                    </ol>
+                </div>
+
+                <div class="flow-diagram" style="margin-top: 30px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                    <h3 style="color: white; margin-bottom: 20px;">🔄 FLUX DU PROCESSUS</h3>
+                    <div class="flow-step" style="background: white; color: #2F3A3A;">Phase 1 : Product Backlog</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step" style="background: white; color: #2F3A3A;">Phase 2 : Cahier de Test</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step" style="background: white; color: #2F3A3A;">Phase 3 : Développement + Tests Unitaires</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step" style="background: white; color: #2F3A3A;">Phase 4 : Exécution Tests en Staging</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step" style="background: white; color: #2F3A3A;">Phase 5 et 6 : Anomalies ? → Boucle Phase 3-4</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step" style="background: white; color: #2F3A3A;">Phase 7 : Rapport de Synthèse et Clôture ✓</div>
+                </div>
+
+                <p style="margin-top: 30px; font-size: 1.1em; text-align: center;">
+                    <strong>Ce référentiel doit être utilisé comme guide pour tous les membres de l'équipe</strong>
+                </p>
+                <div style="display: flex;   justify-content: left;    gap: 50px;    margin-top: 40px; font-style: italic;    font-weight: bold;">
+                <p style="font-size: 12px;">VISA :</p>
+                <div class="checked" style="font-size: 12px;">
+                    <p>Fares Ayedi          : CEO</p>
+                    <p>Hedi Tmar            : Strategy Manager</p>
+                    <p>Alaeddine Derbel     : Office Manager</p>
+                </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Processus de Développement & QA chez KUSA</p>
+        </footer>
+    </div>
+</body>
+</html>
